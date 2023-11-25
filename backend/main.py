@@ -18,3 +18,6 @@ def read_item(movie_id: int, q: Union[str, None] = None):
 def read_item(movie_id: int, q: Union[str, None] = None):
     return {"item_id": movie_id, "q": q}
 
+@app.put("/movies/{add}")
+def read_item(movie_id: int, q: Union[str, None] = None):
+    return {"item_id": movie_id, "q": q}
