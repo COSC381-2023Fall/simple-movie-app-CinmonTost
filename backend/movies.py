@@ -18,6 +18,5 @@ class Movies:
                     )
                 row_idx += 1
 
-
 if __name__ == "__main__":
     movies = Movies('./movies.txt')

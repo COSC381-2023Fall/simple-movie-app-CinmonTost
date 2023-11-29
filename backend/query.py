@@ -2,7 +2,7 @@
 from movies import Movies
 
 # Initialize the Movies object
-movies = Movies('./PythonExercise/movies.txt')
+movies = Movies(r'C:\Users\shaun\Desktop\COSC381\simple-movie-app-CinmonTost\backend\movies.txt')
 
 # Lists all movie names
 def list_movie_names():
@@ -24,35 +24,19 @@ def search_movies_by_cast(keyword):
             results.append(f'{movie_name}\n{cast}')
     return results
 
-# Main menu
-def main_menu():
-    while True:
-        print("\nMain Menu:")
-        print("1. List all movie names")
-        print("2. Search movies by name")
-        print("3. Search movies by cast")
-        print("q. Quit")
+def searchMovieId(movie_id):
+    return movies._movies[movie_id]
 
-        choice = input("Enter your choice: ")
+def replaceMovie(movie_id, new_movie): 
+    movies._movies[movie_id] = new_movie
+    return movies._movies[movie_id]
 
-        if choice == '1':
-            print("All Movie Names:")
-            print(list_movie_names())
-        elif choice == '2':
-            keyword = input("Enter a keyword to search movies by name: ")
-            print(f"Movies with '{keyword}' in their names:")
-            print(search_movies_by_name(keyword))
-        elif choice == '3':
-            keyword = input("Enter a keyword to search movies by cast: ")
-            print(f"Movies with '{keyword}' in their cast:")
-            results = search_movies_by_cast(keyword)
-            for result in results:
-                print(result)
-        elif choice == 'q':
-            print("Goodbye!")
-            break
-        else:
-            print("Invalid option. Please try again.")
+def deleteMovie(movie_id):
+    movieD = searchMovieId(movie_id)
+    movies._[movie_id] = None
+    return movieD
 
-if __name__ == "__main__":
-    main_menu()
+def addMovie(movie_data):
+    movie_data["movie_id"] = len(movies._movies) + 1
+    movies._movies.append(movie_data)
+    return searchMovieId((len(movies._movies)))
